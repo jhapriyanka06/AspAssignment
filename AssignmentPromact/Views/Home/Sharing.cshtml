@@ -1,0 +1,24 @@
+﻿
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Share Your Post";
+}
+<div class="card m-3">
+    <div class="card-header m-2">
+        @Model.Posts.userID
+    </div>
+    <div>
+        @Model.Posts.Post
+    </div>
+</div>
+<div>
+    @using (Html.BeginForm("Create", "Home", FormMethod.Post))
+    {
+        <form class="card-footer">
+            <h3>Share This Post With:</h3>
+            <input type="text" asp-validation-for="userID" name="userID" placeholder="UserName" />
+            <input type="submit" value="SHARE" />
+        </form>
+    }
+</div>

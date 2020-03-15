@@ -1,0 +1,27 @@
+﻿@model IEnumerable<AssignmentPromact.Models.Comments>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "COMMENTS";
+}
+<h3 class="text-center">SEE ALL THE COMMENTS HERE!!!</h3>
+<div class="card">
+    @foreach (var comments in Model)
+    {
+        <div class="card m-3">
+            <div class="card-header">
+                @comments.comments
+            </div>
+            <div>Like:@comments.Like</div>
+        </div>
+        <div class="card-footer">
+            <a asp-controller="Home" asp-action="Likes" asp-route-id="@comments.Comment_Id" class="btn btn-primary">LIKE</a>
+            <a href="~/Home/ShareComment/@comments.Comment_Id" class="btn btn-primary">SHARE</a>
+        </div>
+    }
+    <div style="margin-top:10px">
+        
+        <a href="~/Home/SeePosts" class="btn btn-primary">Go Back To The Post</a>
+    </div>
+</div>
+ 

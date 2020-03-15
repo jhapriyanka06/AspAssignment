@@ -1,0 +1,21 @@
+﻿@model Comments
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Share Your Post";
+}
+<div class="card m-3">
+    <div class="card-header m-2">
+        @Model.comments
+    </div>
+</div>
+<div>
+    @using (Html.BeginForm("Create", "Home", FormMethod.Post))
+    {
+        <form class="card-footer">
+            <h3>Share This Comment With:</h3>
+            <input type="text"  name="userID" placeholder="UserName" />
+            <input type="submit" value="SHARE" />
+        </form>
+    }
+</div>

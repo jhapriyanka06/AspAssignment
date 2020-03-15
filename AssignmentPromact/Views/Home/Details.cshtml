@@ -1,0 +1,35 @@
+﻿
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "POST YOUR COMMENT HERE";
+}
+
+<h3>@Model.pageTitle</h3>
+
+<div class="card m-3">
+    <div class="card-header m-2">
+        @Model.Posts.userID
+    </div>
+    <div>
+        @Model.Posts.Post
+    </div>
+</div>
+<div class="text-center">
+    <a href="~/Home/Comments/@Model.Posts.Post_Id" class="btn btn-primary text-center"> SEE ALL THE COMMENTS FOR THIS POST..</a>
+</div>
+
+
+
+    <div>
+        <form class="card-footer">
+            <textarea rows="5" cols="50" name="comments">
+                    Enter Your Comment Here
+                </textarea>
+            
+            <input href="~/Home/Details" type="submit" value="COMMENT ON THE POST!!!"/>
+        </form>
+    </div>
+
+
+

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<AssignmentPromact.Models.Posts>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "POSTS";
+}
+  
+<h2>ALL POSTS!!!</h2>
+<div>
+    @using (Html.BeginForm("SeePosts", "Home", FormMethod.Post))
+    {
+        <div class="card-header text-right">
+            <form>
+                <input type="text" asp-validation-for="userID" name="userID" placeholder="your username"/>
+                <textarea asp-validation-for="Post" rows="5" cols="50" name="Post" placeholder="enter your post here">
+                   
+                </textarea>
+                <input type="submit" value="POST YOUR OWN!!!" class="btn btn-primary" />
+                
+
+            </form>
+
+        </div>
+
+    }
+
+    <div class="card-header">
+        @foreach (var posts in Model)
+        {
+            <div class="card m-3">
+                <div class="card-header">
+                    @posts.userID
+                </div>
+                <div>
+                    @posts.Post
+                </div>
+                <div>
+                    Likes: @posts.Likes
+                </div>
+                <div class="card-footer">
+                    <a asp-controller="Home" asp-action="IncrementCount" asp-route-id="@posts.Post_Id" class="btn btn-dark" >LIKE</a>
+
+                    <a href="~/Home/Details/@posts.Post_Id" class="btn btn-dark">COMMENT</a>
+
+                    <a href="~/Home/Sharing/@posts.Post_Id" class="btn btn-dark">SHARE</a>
+                </div>
+            </div>
+        }
+
+    </div>
+
+</div>
+<!--<script>
+    function IncrementCount() {
+        $.ajax({
+            type: "POST",
+            url: "/Home/IncrementCount",
+            async: true,
+            success: function (msg) {
+                ServiceSucceeded(msg);
+            },
+            error: function () {
+                return "error";
+            }
+        });
+    }
+</script>-->
